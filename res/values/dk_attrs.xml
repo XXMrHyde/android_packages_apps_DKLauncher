@@ -13,7 +13,6 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <resources>
 
     <declare-styleable name="NumberPickerPreference">
@@ -41,5 +40,4 @@
         <attr name="min" format="integer" />
         <attr name="defaultValue" format="string|boolean|integer|reference|float" />
     </declare-styleable>
-
 </resources>

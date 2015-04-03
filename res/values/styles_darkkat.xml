@@ -15,16 +15,6 @@
 -->
 <resources>
 
-    <style name="NumberPickerInputText">
-        <item name="android:textColor">@android:color/primary_text_dark</item>
-        <item name="android:textColorHighlightInverse">@android:color/transparent</item>
-        <item name="android:textColorHighlight">@android:color/transparent</item>
-        <item name="android:textColorHint">@android:color/transparent</item>
-        <item name="android:textColorLink">@android:color/transparent</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
     <style name="Settings.Theme" parent="android:Theme.Material">
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
@@ -38,5 +28,15 @@
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
+    </style>
+
+    <style name="NumberPickerInputText">
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textColorHighlightInverse">@android:color/transparent</item>
+        <item name="android:textColorHighlight">@android:color/transparent</item>
+        <item name="android:textColorHint">@android:color/transparent</item>
+        <item name="android:textColorLink">@android:color/transparent</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 </resources>
