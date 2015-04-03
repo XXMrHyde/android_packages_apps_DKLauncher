@@ -154,6 +154,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.darkkat.dklauncher.settings.SettingsActivity"
+            android:icon="@mipmap/ic_launcher_home"
+            android:label="@string/dk_application_name"
+            android:theme="@style/Settings.Theme" />
+
         <!-- Debugging tools -->
         <activity
             android:name="com.darkkat.dklauncher.MemoryDumpActivity"

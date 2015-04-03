@@ -38,6 +38,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.darkkat.dklauncher.settings.SettingsProvider;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -67,9 +69,9 @@ public class DeviceProfile {
     String name;
     float minWidthDps;
     float minHeightDps;
-    float numRows;
-    float numColumns;
-    float numHotseatIcons;
+    public float numRows;
+    public float numColumns;
+    public float numHotseatIcons;
     float iconSize;
     private float iconTextSize;
     private int iconDrawablePaddingOriginalPx;
@@ -119,17 +121,23 @@ public class DeviceProfile {
     int hotseatIconSizePx;
     int hotseatBarHeightPx;
     int hotseatAllAppsRank;
-    int allAppsNumRows;
-    int allAppsNumCols;
+    public int allAppsNumRows;
+    public int allAppsNumCols;
+    int searchBarSpaceMaxWidthPx;
     int searchBarSpaceWidthPx;
+    int searchBarHeightPx;
     int searchBarSpaceHeightPx;
     int pageIndicatorHeightPx;
     int allAppsButtonVisualSize;
+
+    boolean showSearchBar;
 
     float dragViewScale;
 
     int allAppsShortEdgeCount = -1;
     int allAppsLongEdgeCount = -1;
+
+    View pageIndicator;
 
     private ArrayList<DeviceProfileCallbacks> mCallbacks = new ArrayList<DeviceProfileCallbacks>();
 
@@ -248,6 +256,13 @@ public class DeviceProfile {
         updateFromConfiguration(context, res, wPx, hPx, awPx, ahPx);
         updateAvailableDimensions(context);
         computeAllAppsButtonSize(context);
+
+        // Search Bar
+        showSearchBar = SettingsProvider.getBoolean(context,
+                SettingsProvider.KEY_SHOW_SEARCH_BAR, true);
+        searchBarSpaceWidthPx = Math.min(searchBarSpaceMaxWidthPx, widthPx);
+        searchBarSpaceHeightPx = 2 * edgeMarginPx
+                + (showSearchBar ? searchBarHeightPx  : 3 * edgeMarginPx);
     }
 
     /**
@@ -360,6 +375,8 @@ public class DeviceProfile {
         for (DeviceProfileCallbacks cb : mCallbacks) {
             cb.onAvailableSizeChanged(this);
         }
+
+        updateFromPreferences(context);
     }
 
     private void updateIconSize(float scale, int drawablePadding, Resources resources,
@@ -370,10 +387,10 @@ public class DeviceProfile {
         hotseatIconSizePx = (int) (DynamicGrid.pxFromDp(hotseatIconSize, dm) * scale);
 
         // Search Bar
-        searchBarSpaceWidthPx = Math.min(widthPx,
-                resources.getDimensionPixelSize(R.dimen.dynamic_grid_search_bar_max_width));
-        searchBarSpaceHeightPx = getSearchBarTopOffset()
-                + resources.getDimensionPixelSize(R.dimen.dynamic_grid_search_bar_height);
+        searchBarSpaceMaxWidthPx = resources.getDimensionPixelSize(R.dimen.dynamic_grid_search_bar_max_width);
+        searchBarHeightPx = resources.getDimensionPixelSize(R.dimen.dynamic_grid_search_bar_height);
+        searchBarSpaceWidthPx = Math.min(searchBarSpaceMaxWidthPx, widthPx);
+        searchBarSpaceHeightPx = searchBarHeightPx + getSearchBarTopOffset();
 
         // Calculate the actual text height
         Paint textPaint = new Paint();
@@ -437,6 +454,58 @@ public class DeviceProfile {
         availableHeightPx = ahPx;
 
         updateAvailableDimensions(context);
+    }
+
+    public void updateFromPreferences(Context context) {
+        int prefNumRows = SettingsProvider.getCellCountY(
+                context, SettingsProvider.KEY_HOMESCREEN_GRID, 4);
+        if (prefNumRows > 0) {
+            numRows = prefNumRows;
+        }
+
+        int prefNumColumns = SettingsProvider.getCellCountX(
+                context, SettingsProvider.KEY_HOMESCREEN_GRID, 4);
+        if (prefNumColumns > 0) {
+            numColumns = prefNumColumns;
+        }
+
+        int prefNumHotseatIcons = SettingsProvider.getInt(
+                context, SettingsProvider.KEY_DOCK_ICONS, 5);
+        if (prefNumHotseatIcons > 0) {
+            numHotseatIcons = prefNumHotseatIcons;
+            hotseatAllAppsRank = (int) (numHotseatIcons / 2);
+        }
+
+        int prefAllAppNumRows = SettingsProvider.getCellCountY(
+                context, SettingsProvider.KEY_DRAWER_GRID, 0);
+        if (prefAllAppNumRows > 0) {
+            allAppsNumRows = prefAllAppNumRows;
+        } else {
+            if (isLandscape) {
+                int pageIndicatorOffset =
+                        context.getResources().getDimensionPixelSize(
+                                R.dimen.apps_customize_page_indicator_offset);
+                allAppsNumRows = (availableHeightPx - pageIndicatorOffset - 4 * edgeMarginPx) /
+                        (iconSizePx + iconTextSizePx + 2 * edgeMarginPx);
+            } else {
+                allAppsNumRows = (int) numRows + 1;
+            }
+            SettingsProvider.putCellCountY(context,
+                    SettingsProvider.KEY_DRAWER_GRID, allAppsNumRows);
+        }
+
+        int prefAllAppNumCols = SettingsProvider.getCellCountX(
+                context, SettingsProvider.KEY_DRAWER_GRID, 0);
+        if (prefAllAppNumCols > 0) {
+            allAppsNumCols = prefAllAppNumCols;
+        } else {
+            Rect padding = getWorkspacePadding(isLandscape ?
+                    CellLayout.LANDSCAPE : CellLayout.PORTRAIT);
+            allAppsNumCols = (availableWidthPx - padding.left - padding.right - 2 * edgeMarginPx) /
+                    (iconSizePx + 2 * edgeMarginPx);
+            SettingsProvider.putCellCountX(context,
+                    SettingsProvider.KEY_DRAWER_GRID, allAppsNumCols);
+        }
     }
 
     private float dist(PointF p0, PointF p1) {
@@ -511,9 +580,9 @@ public class DeviceProfile {
     /** Returns the search bar top offset */
     int getSearchBarTopOffset() {
         if (isTablet() && !isVerticalBarLayout()) {
-            return 4 * edgeMarginPx;
+            return showSearchBar ? 4 * edgeMarginPx : 0;
         } else {
-            return 2 * edgeMarginPx;
+            return showSearchBar ? 2 * edgeMarginPx : 0;
         }
     }
 
@@ -546,12 +615,13 @@ public class DeviceProfile {
                         (numColumns * cellWidthPx)) / (2 * (numColumns + 1)));
                 bounds.set(edgeMarginPx + gap, getSearchBarTopOffset(),
                         availableWidthPx - (edgeMarginPx + gap),
-                        searchBarSpaceHeightPx);
+                        showSearchBar ? searchBarSpaceHeightPx : edgeMarginPx);
             } else {
                 bounds.set(desiredWorkspaceLeftRightMarginPx - defaultWidgetPadding.left,
                         getSearchBarTopOffset(),
                         availableWidthPx - (desiredWorkspaceLeftRightMarginPx -
-                        defaultWidgetPadding.right), searchBarSpaceHeightPx);
+                        defaultWidgetPadding.right),
+                        showSearchBar ? searchBarSpaceHeightPx : edgeMarginPx);
             }
         }
         return bounds;
@@ -699,14 +769,22 @@ public class DeviceProfile {
     }
 
     public void layout(Launcher launcher) {
+        showSearchBar = SettingsProvider.getBoolean(launcher,
+                SettingsProvider.KEY_SHOW_SEARCH_BAR, true);
+        searchBarSpaceHeightPx = 2 * edgeMarginPx
+                + (showSearchBar ? searchBarHeightPx : 3 * edgeMarginPx);
         FrameLayout.LayoutParams lp;
         Resources res = launcher.getResources();
         boolean hasVerticalBarLayout = isVerticalBarLayout();
 
         // Layout the search bar space
         View searchBar = launcher.getSearchBar();
+        LinearLayout dropTargetBar = (LinearLayout) launcher.getSearchBar().getDropTargetBar();
         lp = (FrameLayout.LayoutParams) searchBar.getLayoutParams();
         if (hasVerticalBarLayout) {
+            // If search bar is invisible add some extra padding for the drop targets
+            searchBarSpaceHeightPx = showSearchBar ? searchBarSpaceHeightPx
+                    : searchBarSpaceHeightPx + 5 * edgeMarginPx;
             // Vertical search bar space
             lp.gravity = Gravity.TOP | Gravity.LEFT;
             lp.width = searchBarSpaceHeightPx;
@@ -721,6 +799,21 @@ public class DeviceProfile {
             lp.height = searchBarSpaceHeightPx;
         }
         searchBar.setLayoutParams(lp);
+
+        // Layout the drop target icons
+        if (hasVerticalBarLayout) {
+            dropTargetBar.setOrientation(LinearLayout.VERTICAL);
+        } else {
+            dropTargetBar.setOrientation(LinearLayout.HORIZONTAL);
+        }
+
+        // Layout the search bar
+        View qsbBar = launcher.getQsbBar();
+        qsbBar.setVisibility(showSearchBar ? View.VISIBLE : View.GONE);
+        LayoutParams vglp = qsbBar.getLayoutParams();
+        vglp.width = LayoutParams.MATCH_PARENT;
+        vglp.height = LayoutParams.MATCH_PARENT;
+        qsbBar.setLayoutParams(vglp);
 
         // Layout the workspace
         PagedView workspace = (PagedView) launcher.findViewById(R.id.workspace);
@@ -761,7 +854,7 @@ public class DeviceProfile {
         hotseat.setLayoutParams(lp);
 
         // Layout the page indicators
-        View pageIndicator = launcher.findViewById(R.id.page_indicator);
+        pageIndicator = launcher.findViewById(R.id.page_indicator);
         if (pageIndicator != null) {
             if (hasVerticalBarLayout) {
                 // Hide the page indicators when we have vertical search/hotseat
@@ -772,7 +865,7 @@ public class DeviceProfile {
                 lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
                 lp.width = LayoutParams.WRAP_CONTENT;
                 lp.height = LayoutParams.WRAP_CONTENT;
-                lp.bottomMargin = hotseatBarHeightPx;
+                lp.bottomMargin = Math.max(hotseatBarHeightPx, lp.bottomMargin);
                 pageIndicator.setLayoutParams(lp);
             }
         }

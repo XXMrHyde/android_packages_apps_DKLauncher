@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2015 DarkKat
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <string name="dk_application_name" translatable="false">DKLauncher</string>
+
+    <!-- Dock Settings -->
+    <string name="dock_title">Dock</string>
+    <string name="dock_icons_title">Dock icons</string>
+    <string name="dock_icons_summary">Number of icons in the dock</string>
+
+    <!-- Homescreen Settings -->
+    <string name="homescreen_title">Homescreen</string>
+    <string name="show_search_bar_title">Show search bar</string>
+    <string name="default_screen_title">Default Screen</string>
+    <string name="default_screen_summary">Choose the default Screen</string>
+
+    <!-- Grid Size -->
+    <string name="grid_size_title">Grid size</string>
+    <string name="grid_size_summary">Choose the number of rows/columns</string>
+    <string name="grid_size_rows_title">Rows</string>
+    <string name="grid_size_columns_title">Columns</string>
+
+    <!-- Drawer Settings -->
+    <string name="drawer_title">Drawer</string>
+
+</resources>

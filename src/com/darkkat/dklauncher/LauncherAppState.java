@@ -63,6 +63,8 @@ public class LauncherAppState implements DeviceProfile.DeviceProfileCallbacks {
 
     private DynamicGrid mDynamicGrid;
 
+    private static boolean sSettingsChanged = false;
+
     public static LauncherAppState getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new LauncherAppState();
@@ -72,6 +74,18 @@ public class LauncherAppState implements DeviceProfile.DeviceProfileCallbacks {
 
     public static LauncherAppState getInstanceNoCreate() {
         return INSTANCE;
+    }
+
+    public static void setSettingsChanged() {
+        sSettingsChanged = true;
+    }
+
+    public static boolean getSettingsChanged() {
+        if (sSettingsChanged) {
+            sSettingsChanged = false;
+            return true;
+        }
+        return false;
     }
 
     public Context getContext() {
