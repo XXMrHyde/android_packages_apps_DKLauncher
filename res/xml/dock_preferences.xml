@@ -24,4 +24,9 @@
         launcher:min="1"
         launcher:max="7" />
 
+     <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="dock_all_apps_icon_color"
+        android:title="@string/dock_all_apps_icon_color_title"
+        android:defaultValue="0xffffffff" />
+
 </PreferenceScreen>

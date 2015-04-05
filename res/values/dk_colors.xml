@@ -21,4 +21,7 @@
     <color name="accent">#ff2196F3</color>
     <color name="background">#ff1b1f23</color>
 
+    <!-- Color picker -->
+    <color name="dialog_color_picker_hex_title">#ffffffff</color>
+
 </resources>

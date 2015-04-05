@@ -17,11 +17,17 @@
 package com.darkkat.dklauncher.settings;
 
 import android.os.Bundle;
+import android.preference.Preference;
 
 import com.darkkat.dklauncher.preference.NumberPickerPreference;
 import com.darkkat.dklauncher.R;
 
-public class DockFragment extends SettingsPreferenceFragment {
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
+public class DockFragment extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
+
+    private ColorPickerPreference mAllAppsIconColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,5 +46,27 @@ public class DockFragment extends SettingsPreferenceFragment {
                 dockIcons.setDefaultValue((int) mProfile.numHotseatIcons);
             }
         }
+
+        mAllAppsIconColor = (ColorPickerPreference) findPreference(
+                SettingsProvider.KEY_DOCK_ALL_APPS_ICON_COLOR);
+        int intColor = SettingsProvider.getInt(getActivity(),
+                SettingsProvider.KEY_DOCK_ALL_APPS_ICON_COLOR, 0xffffffff);
+        mAllAppsIconColor.setNewPreviewColor(intColor);
+        String hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mAllAppsIconColor.setSummary(hexColor);
+        mAllAppsIconColor.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mAllAppsIconColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            SettingsProvider.putInt(getActivity(),
+                    SettingsProvider.KEY_DOCK_ALL_APPS_ICON_COLOR, intHex);
+            preference.setSummary(hex);
+        }
+        return true;
     }
 }

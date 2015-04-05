@@ -22,6 +22,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.darkkat.dklauncher.settings.SettingsProvider;
 
 import java.util.ArrayList;
 
@@ -152,11 +155,8 @@ public class Hotseat extends FrameLayout {
             LayoutInflater inflater = LayoutInflater.from(context);
             TextView allAppsButton = (TextView)
                     inflater.inflate(R.layout.all_apps_button, mContent, false);
-            Drawable d = context.getResources().getDrawable(R.drawable.all_apps_button_icon);
 
-            Utilities.resizeIconDrawable(d);
-            allAppsButton.setCompoundDrawables(null, d, null, null);
-
+            allAppsButton.setCompoundDrawables(null, getAllAppsButtonDrawable(context), null, null);
             allAppsButton.setContentDescription(context.getString(R.string.all_apps_button_label));
             allAppsButton.setOnKeyListener(new HotseatIconKeyEventListener());
             if (mLauncher != null) {
@@ -235,5 +235,14 @@ public class Hotseat extends FrameLayout {
                 info.add(si);
             }
         }
+    }
+
+    private Drawable getAllAppsButtonDrawable(Context context) {
+        Drawable d = context.getResources().getDrawable(R.drawable.all_apps_button_icon);
+        int color = SettingsProvider.getInt(context,
+            SettingsProvider.KEY_DOCK_ALL_APPS_ICON_COLOR, 0xffffffff);
+        d.setColorFilter(color, Mode.MULTIPLY);
+        Utilities.resizeIconDrawable(d);
+        return d;
     }
 }

@@ -15,6 +15,11 @@
 -->
 <resources>
 
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Farbauswahl</string>
+    <string name="press_color_to_apply">Drücke unten auf eine Farbe um sie anzuwenden</string>
+    <string name="set">Setzen</string>
+
     <!-- Grid Size -->
     <string name="grid_size_title">Rastergröße</string>
     <string name="grid_size_summary">Wähle die Anzahl der Reihen/Spalten</string>
@@ -31,6 +36,7 @@
     <string name="dock_title">Dock</string>
     <string name="dock_icons_title">Dock Symbole</string>
     <string name="dock_icons_summary">Wähle die Anzahl der Dock Symbole</string>
+    <string name="dock_all_apps_icon_color_title">Farbe des Alle Apps Symbols</string>
 
     <!-- Drawer Settings -->
     <string name="drawer_title">Drawer</string>

@@ -25,6 +25,7 @@ public interface SettingsKeys {
 
     // Dock
     public static final String KEY_DOCK_ICONS = "dock_icon_count";
+    public static final String KEY_DOCK_ALL_APPS_ICON_COLOR = "dock_all_apps_icon_color";
 
     // Drawer
     public static final String KEY_DRAWER_GRID = "drawer_grid";

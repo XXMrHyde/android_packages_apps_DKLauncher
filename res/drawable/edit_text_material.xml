@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2015 DarkKat
+<!-- Copyright (C) 2014 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,13 +13,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="dk_application_name" translatable="false">DKLauncher</string>
-
-    <!-- Color Picker -->
-    <string name="arrow_right" translatable="false">→</string>
-    <string name="arrow_down" translatable="false">↓</string>
-    <string name="hex" translatable="false">Hex:</string>
-    <string name="hex_hint" translatable="false">#ff000000</string>
-</resources>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+        android:insetLeft="@dimen/edit_text_inset_horizontal_material"
+        android:insetRight="@dimen/edit_text_inset_horizontal_material"
+        android:insetTop="@dimen/edit_text_inset_top_material"
+        android:insetBottom="@dimen/edit_text_inset_bottom_material">
+    <nine-patch android:src="@drawable/textfield_activated_mtrl_alpha"
+            android:tint="@color/accent" />
+</inset>
