@@ -54,6 +54,8 @@ public class DockFragment extends SettingsPreferenceFragment
         mAllAppsIconColor.setNewPreviewColor(intColor);
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
         mAllAppsIconColor.setSummary(hexColor);
+        mAllAppsIconColor.setDefaultColors(0xffffffff, 0xff33b5e5);
+        mAllAppsIconColor.setAlphaSliderEnabled(true);
         mAllAppsIconColor.setOnPreferenceChangeListener(this);
     }
 

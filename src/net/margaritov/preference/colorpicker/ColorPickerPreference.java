@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2011 Sergey Margaritov
  * Copyright (C) 2013 Slimroms
+ * Copyright (C) 2015 DarkKat
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +43,8 @@ public class ColorPickerPreference extends Preference implements
     View mView;
     LinearLayout widgetFrameView;
     int mDefaultValue = Color.BLACK;
+    int mAndroidColor = 0x00000000;
+    int mDarkKatColor = mAndroidColor;
     private int mValue = Color.BLACK;
     private float mDensity = 0;
     private boolean mAlphaSliderEnabled = false;
@@ -182,7 +185,9 @@ public class ColorPickerPreference extends Preference implements
     }
 
     public boolean onPreferenceClick(Preference preference) {
-        ColorPickerDialog picker = new ColorPickerDialog(getContext(), getValue());
+        ColorPickerDialog picker = new ColorPickerDialog(
+                getContext(), R.style.Theme_ColorPickerDialog, getValue(),
+                mAndroidColor, mDarkKatColor);
         picker.setOnColorChangedListener(this);
         if (mAlphaSliderEnabled) {
             picker.setAlphaSliderVisible(true);
@@ -199,6 +204,11 @@ public class ColorPickerPreference extends Preference implements
      */
     public void setAlphaSliderEnabled(boolean enable) {
         mAlphaSliderEnabled = enable;
+    }
+
+    public void setDefaultColors(int androidColor, int darkkatColor) {
+        mAndroidColor = androidColor;
+        mDarkKatColor = darkkatColor;
     }
 
     /**
@@ -272,6 +282,5 @@ public class ColorPickerPreference extends Preference implements
 
         return Color.argb(alpha, red, green, blue);
     }
-
 }
 

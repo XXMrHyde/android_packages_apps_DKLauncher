@@ -16,9 +16,16 @@
 <resources>
 
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Farbauswahl</string>
+    <string name="dialog_color_picker_title">Farbauswahl</string>
     <string name="press_color_to_apply">Drücke unten auf eine Farbe um sie anzuwenden</string>
     <string name="set">Setzen</string>
+
+    <string name="palette_darkkat_title">DarkKat</string>
+    <string name="palette_material_title">Material</string>
+    <string name="palette_rgb_title">RGB</string>
+
+    <string name="reset_android_title">Android Standard</string>
+    <string name="reset_darkkat_title">DarkKat Standard</string>
 
     <!-- Grid Size -->
     <string name="grid_size_title">Rastergröße</string>

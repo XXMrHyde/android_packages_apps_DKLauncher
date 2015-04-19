@@ -13,19 +13,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
 
-    <color name="white">#ffffffff</color>
-    <color name="divider">#1fffffff</color>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/reset_android"
+        android:title="@string/reset_android_title"
+        />
+    <item android:id="@+id/reset_darkkat"
+        android:title="@string/reset_darkkat_title"
+        />
+</menu>
 
-    <!-- Settings -->
-    <color name="primary">#ff2196F3</color>
-    <color name="primary_dark">#ff1976D2</color>
-    <color name="accent">#ff2196F3</color>
-    <color name="background">#ff1b1f23</color>
-
-    <!-- Color picker -->
-    <color name="ripple_material_dark">#4dffffff</color>
-    <color name="button_material_dark">#ff5a595b</color>
-
-</resources>
