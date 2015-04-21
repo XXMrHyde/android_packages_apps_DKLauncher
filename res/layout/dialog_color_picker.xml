@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentStart="true"
+            android:paddingRight="4dp"
             android:gravity="center_vertical"
             android:background="@color/primary"
             android:orientation="horizontal">
@@ -81,7 +82,6 @@
                 android:id="@+id/reset"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginRight="4dp"
                 android:src="@drawable/ic_action_reset"
                 android:background="@drawable/item_background_borderless_material"
                 android:scaleType="centerInside" />
