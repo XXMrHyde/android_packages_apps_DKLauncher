@@ -31,15 +31,15 @@
     <string name="grid_size_columns_title">Colonnes</string>
 
     <!-- Homescreen Settings -->
-    <string name="homescreen_title">Écran d'Accueil</string>
+    <string name="homescreen_title">Écran d\'Accueil</string>
     <string name="show_search_bar_title">Afficher la barre de recherche</string>
     <string name="default_screen_title">Écran par défaut</string>
-    <string name="default_screen_summary">Choisissez l'écran par défaut</string>
+    <string name="default_screen_summary">Choisissez l\'écran par défaut</string>
 
     <!-- Dock Settings -->
     <string name="dock_title">Dock</string>
     <string name="dock_icons_title">Icônes du Dock</string>
-    <string name="dock_icons_summary">Nombre d'icônes sur le dock</string>
+    <string name="dock_icons_summary">Nombre d\'icônes sur le dock</string>
     <string name="dock_all_apps_icon_color_title">Couleur des icônes de toute les applications</string>
 
     <!-- Drawer Settings -->
