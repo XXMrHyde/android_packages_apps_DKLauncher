@@ -16,33 +16,33 @@
 <resources>
 
     <!-- Color Picker -->
-    <string name="dialog_color_picker_title">Tableta de colores</string>
-    <string name="press_color_to_apply">Selecciona el color de debajo para aplicar</string>
-    <string name="palette_darkkat_title">DarkKat</string> <!-- needs translation -->
-    <string name="palette_material_title">Material</string> <!-- needs translation -->
-    <string name="palette_rgb_title">RGB</string> <!-- needs translation -->
-    <string name="reset_android_title">Android default</string> <!-- needs translation -->
-    <string name="reset_darkkat_title">DarkKat default</string> <!-- needs translation -->
+    <string name="dialog_color_picker_title">Selector de color</string>
+    <string name="press_color_to_apply">Selecciona un color a continuación para aplicar</string>
+    <string name="palette_darkkat_title">DarkKat</string>
+    <string name="palette_material_title">Material</string>
+    <string name="palette_rgb_title">RGB</string>
+    <string name="reset_android_title">Predeterminado Android</string>
+    <string name="reset_darkkat_title">Predeterminado DarkKat</string>
 
     <!-- Grid Size -->
-    <string name="grid_size_title">Grid size</string> <!-- needs translation -->
-    <string name="grid_size_summary">Choose the number of rows/columns</string> <!-- needs translation -->
-    <string name="grid_size_rows_title">Rows</string> <!-- needs translation -->
-    <string name="grid_size_columns_title">Columns</string> <!-- needs translation -->
+    <string name="grid_size_title">Tamaño de la cuadrícula</string>
+    <string name="grid_size_summary">Selecciona la cantidad de filas/columnas</string>
+    <string name="grid_size_rows_title">Filas</string>
+    <string name="grid_size_columns_title">Columnas</string>
 
     <!-- Homescreen Settings -->
-    <string name="homescreen_title">Homescreen</string> <!-- needs translation -->
-    <string name="show_search_bar_title">Show search bar</string> <!-- needs translation -->
-    <string name="default_screen_title">Default Screen</string> <!-- needs translation -->
-    <string name="default_screen_summary">Choose the default Screen</string> <!-- needs translation -->
+    <string name="homescreen_title">Pantalla de inicio</string>
+    <string name="show_search_bar_title">Mostrar barra de búsqueda</string>
+    <string name="default_screen_title">Pantalla predeterminada</string>
+    <string name="default_screen_summary">Escoge la pantalla predeterminada</string>
 
     <!-- Dock Settings -->
-    <string name="dock_title">Dock</string> <!-- needs translation -->
-    <string name="dock_icons_title">Dock icons</string> <!-- needs translation -->
-    <string name="dock_icons_summary">Number of icons in the dock</string> <!-- needs translation -->
-    <string name="dock_all_apps_icon_color_title">All apps icon color</string> <!-- needs translation -->
+    <string name="dock_title">Dock</string>
+    <string name="dock_icons_title">Iconos del Dock</string>
+    <string name="dock_icons_summary">Número de iconos del dock</string>
+    <string name="dock_all_apps_icon_color_title">Color de los iconos de todas las aplicaciones</string>
 
     <!-- Drawer Settings -->
-    <string name="drawer_title">Drawer</string> <!-- needs translation -->
+    <string name="drawer_title">Cajón</string>
 
 </resources>
