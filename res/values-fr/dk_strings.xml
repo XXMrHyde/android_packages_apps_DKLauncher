@@ -44,5 +44,9 @@
 
     <!-- Drawer Settings -->
     <string name="drawer_title">Tiroir</string>
+    <string name="drawer_sort_mode_title">Sort mode</string> <!-- Needs translation -->
+    <string name="sort_mode_title">Title</string> <!-- Needs translation -->
+    <string name="sort_mode_launch_count">Launch count</string> <!-- Needs translation -->
+    <string name="sort_mode_install_time">Install time</string> <!-- Needs translation -->
 
 </resources>

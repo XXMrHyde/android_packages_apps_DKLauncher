@@ -44,5 +44,9 @@
 
     <!-- Drawer Settings -->
     <string name="drawer_title">Drawer</string>
+    <string name="drawer_sort_mode_title">Sortiermodus</string>
+    <string name="sort_mode_title">Titel</string>
+    <string name="sort_mode_launch_count">Anzahl der Aufruf</string>
+    <string name="sort_mode_install_time">Installationsdatum</string>
 
 </resources>

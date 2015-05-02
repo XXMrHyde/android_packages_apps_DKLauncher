@@ -28,4 +28,12 @@
         launcher:pickerTitle1="@string/grid_size_rows_title"
         launcher:pickerTitle2="@string/grid_size_columns_title" />
 
+    <ListPreference
+        android:key="drawer_sort_mode"
+        android:title="@string/drawer_sort_mode_title"
+        android:summary="%s"
+        android:entries="@array/sort_mode_entries"
+        android:entryValues="@array/sort_mode_values"
+        android:defaultValue="0" />
+
 </PreferenceScreen>

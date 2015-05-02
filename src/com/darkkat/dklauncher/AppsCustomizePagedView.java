@@ -49,9 +49,11 @@ import android.widget.Toast;
 
 import com.darkkat.dklauncher.DropTarget.DragObject;
 import com.darkkat.dklauncher.compat.AppWidgetManagerCompat;
+import com.darkkat.dklauncher.settings.SettingsProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -157,6 +159,16 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
     }
     private ContentType mContentType = ContentType.Applications;
 
+    /**
+     * The different sort modes that can be used to order items
+     */
+    public enum SortMode {
+        Title,
+        LaunchCount,
+        InstallTime
+    }
+    private SortMode mSortMode = SortMode.Title;
+
     // Refs
     private Launcher mLauncher;
     private DragController mDragController;
@@ -236,6 +248,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
             setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
         }
         setSinglePageInViewport();
+        updateSortMode(context);
     }
 
     @Override
@@ -342,6 +355,19 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
         mCellCountX = (int) grid.allAppsNumCols;
         mCellCountY = (int) grid.allAppsNumRows;
         updatePageCounts();
+        updateSortMode(mLauncher);
+    }
+
+    public void updateSortMode(Context context) {
+        int sortMode = Integer.parseInt(SettingsProvider.getString(context,
+                SettingsProvider.KEY_DRAWER_SORT_MODE, "0"));
+        if (sortMode == 0) {
+            mSortMode = SortMode.Title;
+        } else if (sortMode == 1) {
+            mSortMode = SortMode.LaunchCount;
+        } else if (sortMode == 2) {
+            mSortMode = SortMode.InstallTime;
+        }
     }
 
     protected void onDataReady(int width, int height) {
@@ -1393,6 +1419,19 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
         mSaveInstanceStateItemIndex = -1;
     }
 
+    public Comparator<AppInfo> getComparatorForSortMode() {
+        switch (mSortMode) {
+            case Title:
+                return LauncherModel.getAppNameComparator();
+            case LaunchCount:
+                return LauncherModel.getLaunchCountComparator(mLauncher.getStats());
+            case InstallTime:
+                return LauncherModel.getAppInstallTimeComparator();
+            default:
+                return LauncherModel.getAppNameComparator();
+        }
+    }
+
     /*
      * AllAppsView implementation
      */
@@ -1407,7 +1446,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
      * has yet to be set, we can requestLayout() and wait for onDataReady() to be called in the
      * next onMeasure() pass, which will trigger an invalidatePageData() itself.
      */
-    private void invalidateOnDataChange() {
+    protected void invalidateOnDataChange() {
         if (!isDataReady()) {
             // The next layout pass will trigger data-ready if both widgets and apps are set, so
             // request a layout to trigger the page data when ready.
@@ -1421,7 +1460,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
     public void setApps(ArrayList<AppInfo> list) {
         if (!LauncherAppState.isDisableAllApps()) {
             mApps = list;
-            Collections.sort(mApps, LauncherModel.getAppNameComparator());
+            Collections.sort(mApps, getComparatorForSortMode());
             updatePageCountsAndInvalidateData();
         }
     }
@@ -1430,7 +1469,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
         int count = list.size();
         for (int i = 0; i < count; ++i) {
             AppInfo info = list.get(i);
-            int index = Collections.binarySearch(mApps, info, LauncherModel.getAppNameComparator());
+            int index = Collections.binarySearch(mApps, info, getComparatorForSortMode());
             if (index < 0) {
                 mApps.add(-(index + 1), info);
             }

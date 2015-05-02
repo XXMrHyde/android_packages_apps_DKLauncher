@@ -29,4 +29,5 @@ public interface SettingsKeys {
 
     // Drawer
     public static final String KEY_DRAWER_GRID = "drawer_grid";
+    public static final String KEY_DRAWER_SORT_MODE = "drawer_sort_mode";
 }
