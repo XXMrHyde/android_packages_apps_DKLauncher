@@ -34,8 +34,10 @@ public class HomescreenFragment extends SettingsPreferenceFragment {
         mHomescreenGrid = (DoubleNumberPickerPreference)
                 findPreference(SettingsProvider.KEY_HOMESCREEN_GRID);
 
-
         if (mProfile != null) {
+            if (!mProfile.isQsbBarAvailable()) {
+                removePreference(SettingsProvider.KEY_SHOW_SEARCH_BAR);
+            }
             if (SettingsProvider.getCellCountX(getActivity(),
                     SettingsProvider.KEY_HOMESCREEN_GRID, 0) < 1) {
                 SettingsProvider.putCellCountX(getActivity(),

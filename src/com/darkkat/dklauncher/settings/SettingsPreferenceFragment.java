@@ -18,6 +18,7 @@ package com.darkkat.dklauncher.settings;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 
@@ -53,6 +54,13 @@ public class SettingsPreferenceFragment extends PreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void removePreference(String key) {
+        Preference pref = findPreference(key);
+        if (pref != null) {
+            getPreferenceScreen().removePreference(pref);
+        }
     }
 }
 

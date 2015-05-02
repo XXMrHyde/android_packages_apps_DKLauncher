@@ -138,6 +138,7 @@ public class DeviceProfile {
     int allAppsLongEdgeCount = -1;
 
     View pageIndicator;
+    public View qsbBar;
 
     private ArrayList<DeviceProfileCallbacks> mCallbacks = new ArrayList<DeviceProfileCallbacks>();
 
@@ -771,6 +772,11 @@ public class DeviceProfile {
     public void layout(Launcher launcher) {
         showSearchBar = SettingsProvider.getBoolean(launcher,
                 SettingsProvider.KEY_SHOW_SEARCH_BAR, true);
+        if (launcher.getQsbBar() == null && showSearchBar) {
+            SettingsProvider.putBoolean(launcher,
+                    SettingsProvider.KEY_SHOW_SEARCH_BAR, false);
+            showSearchBar = false;
+        }
         searchBarSpaceHeightPx = 2 * edgeMarginPx
                 + (showSearchBar ? searchBarHeightPx : 3 * edgeMarginPx);
         FrameLayout.LayoutParams lp;
@@ -808,12 +814,14 @@ public class DeviceProfile {
         }
 
         // Layout the search bar
-        View qsbBar = launcher.getQsbBar();
-        qsbBar.setVisibility(showSearchBar ? View.VISIBLE : View.GONE);
-        LayoutParams vglp = qsbBar.getLayoutParams();
-        vglp.width = LayoutParams.MATCH_PARENT;
-        vglp.height = LayoutParams.MATCH_PARENT;
-        qsbBar.setLayoutParams(vglp);
+        qsbBar = launcher.getQsbBar();
+        if (qsbBar != null) {
+            qsbBar.setVisibility(showSearchBar ? View.VISIBLE : View.GONE);
+            LayoutParams vglp = qsbBar.getLayoutParams();
+            vglp.width = LayoutParams.MATCH_PARENT;
+            vglp.height = LayoutParams.MATCH_PARENT;
+            qsbBar.setLayoutParams(vglp);
+        }
 
         // Layout the workspace
         PagedView workspace = (PagedView) launcher.findViewById(R.id.workspace);
@@ -967,5 +975,9 @@ public class DeviceProfile {
                 }
             }
         }
+    }
+
+    public boolean isQsbBarAvailable() {
+        return qsbBar != null;
     }
 }
