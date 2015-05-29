@@ -44,9 +44,9 @@
 
     <!-- Drawer Settings -->
     <string name="drawer_title">Выдвижной ящик</string>
-    <string name="drawer_sort_mode_title">Sort mode</string> <!-- Needs translation -->
-    <string name="sort_mode_title">Title</string> <!-- Needs translation -->
-    <string name="sort_mode_launch_count">Launch count</string> <!-- Needs translation -->
-    <string name="sort_mode_install_time">Install time</string> <!-- Needs translation -->
+    <string name="drawer_sort_mode_title">Режим сортировки</string>
+    <string name="sort_mode_title">Название</string>
+    <string name="sort_mode_launch_count">Количество запусков</string>
+    <string name="sort_mode_install_time">Установите время</string>
 
 </resources>
