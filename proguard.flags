@@ -1,30 +1,30 @@
--keep class com.android.launcher3.BaseRecyclerViewFastScrollBar {
+-keep class com.darkkat.dklauncher.BaseRecyclerViewFastScrollBar {
   public void setWidth(int);
   public int getWidth();
   public void setTrackAlpha(int);
   public int getTrackAlpha();
 }
 
--keep class com.android.launcher3.BaseRecyclerViewFastScrollPopup {
+-keep class com.darkkat.dklauncher.BaseRecyclerViewFastScrollPopup {
   public void setAlpha(float);
   public float getAlpha();
 }
 
--keep class com.android.launcher3.BubbleTextView {
+-keep class com.darkkat.dklauncher.BubbleTextView {
   public void setFastScrollFocus(float);
   public float getFastScrollFocus();
 }
 
--keep class com.android.launcher3.ButtonDropTarget {
+-keep class com.darkkat.dklauncher.ButtonDropTarget {
   public int getTextColor();
 }
 
--keep class com.android.launcher3.CellLayout {
+-keep class com.darkkat.dklauncher.CellLayout {
   public float getBackgroundAlpha();
   public void setBackgroundAlpha(float);
 }
 
--keep class com.android.launcher3.CellLayout$LayoutParams {
+-keep class com.darkkat.dklauncher.CellLayout$LayoutParams {
   public void setWidth(int);
   public int getWidth();
   public void setHeight(int);
@@ -35,7 +35,7 @@
   public int getY();
 }
 
--keep class com.android.launcher3.DragLayer$LayoutParams {
+-keep class com.darkkat.dklauncher.DragLayer$LayoutParams {
   public void setWidth(int);
   public int getWidth();
   public void setHeight(int);
@@ -46,21 +46,21 @@
   public int getY();
 }
 
--keep class com.android.launcher3.FastBitmapDrawable {
+-keep class com.darkkat.dklauncher.FastBitmapDrawable {
   public int getBrightness();
   public void setBrightness(int);
 }
 
--keep class com.android.launcher3.MemoryDumpActivity {
+-keep class com.darkkat.dklauncher.MemoryDumpActivity {
   *;
 }
 
--keep class com.android.launcher3.PreloadIconDrawable {
+-keep class com.darkkat.dklauncher.PreloadIconDrawable {
   public float getAnimationProgress();
   public void setAnimationProgress(float);
 }
 
--keep class com.android.launcher3.Workspace {
+-keep class com.darkkat.dklauncher.Workspace {
   public float getBackgroundAlpha();
   public void setBackgroundAlpha(float);
 }
