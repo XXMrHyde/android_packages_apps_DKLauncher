@@ -25,29 +25,29 @@
     <color name="info_target_hover_tint">#FF009688</color>
     <color name="cling_scrim_background">#80000000</color>
 
-    <color name="focused_background">#80c6c5c5</color>
+    <color name="focused_background">#80393A3A</color>
 
-    <color name="workspace_icon_text_color">#FFF</color>
+    <color name="workspace_icon_text_color">@color/white</color>
 
-    <color name="workspace_edge_effect_color">#FFFFFFFF</color>
-    <color name="folder_edge_effect_color">#FF757575</color>
+    <color name="workspace_edge_effect_color">@color/white</color>
+    <color name="folder_edge_effect_color">@color/white</color>
 
-    <color name="quantum_panel_text_color">#FF666666</color>
-    <color name="quantum_panel_bg_color">#FFF5F5F5</color>
-    <color name="quantum_panel_bg_color_dark">#FF374248</color>
+    <color name="quantum_panel_text_color">@color/white</color>
+    <color name="quantum_panel_bg_color">@color/background</color>
+    <color name="quantum_panel_bg_color_dark">@color/background</color>
 
-    <color name="outline_color">#FFFFFFFF</color>
+    <color name="outline_color">@color/white</color>
 
     <!-- Containers -->
-    <color name="container_fastscroll_thumb_inactive_color">#42000000</color>
-    <color name="container_fastscroll_thumb_active_color">#009688</color>
+    <color name="container_fastscroll_thumb_inactive_color">#4dFFFFFF</color>
+    <color name="container_fastscroll_thumb_active_color">@color/accent</color>
 
     <!-- All Apps -->
-    <color name="all_apps_grid_section_text_color">#009688</color>
+    <color name="all_apps_grid_section_text_color">@color/accent</color>
 
     <!-- Widgets view -->
-    <color name="widgets_view_fastscroll_thumb_inactive_color">#42FFFFFF</color>
-    <color name="widgets_view_section_text_color">#FFFFFF</color>
+    <color name="widgets_view_fastscroll_thumb_inactive_color">@color/disabled_dark</color>
+    <color name="widgets_view_section_text_color">@color/white</color>
     <color name="widgets_view_item_text_color">#C4C4C4</color>
     <color name="widgets_cell_color">#263238</color>
 </resources>

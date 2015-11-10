@@ -37,7 +37,7 @@
             android:contentDescription="@string/all_apps_button_label"
             android:paddingBottom="13dp"
             android:paddingTop="13dp"
-            android:src="@drawable/ic_arrow_back_grey" />
+            android:src="@drawable/ic_arrow_back_white" />
 
         <com.darkkat.dklauncher.allapps.AllAppsSearchEditView
             android:id="@+id/search_box_input"
@@ -53,8 +53,13 @@
             android:paddingLeft="8dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textColor="#4c4c4c"
-            android:textColorHint="#9c9c9c"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/accent"
+            android:textColorHint="@color/disabled_dark"
+            android:textSelectHandleLeft="@drawable/text_select_handle_left_dk"
+            android:textSelectHandleRight="@drawable/text_select_handle_right_dk"
+            android:textSelectHandle="@drawable/text_select_handle_middle_dk"
+            android:textCursorDrawable="@drawable/text_cursor_dk"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -68,5 +73,5 @@
         android:contentDescription="@string/all_apps_search_bar_hint"
         android:paddingBottom="13dp"
         android:paddingTop="13dp"
-        android:src="@drawable/ic_search_grey" />
+        android:src="@drawable/ic_search_white" />
 </FrameLayout>

@@ -67,10 +67,13 @@
             android:paddingBottom="8dp"
             android:paddingTop="4dp"
             android:singleLine="true"
-            android:textColor="#ff777777"
-            android:textColorHighlight="#ffCCCCCC"
-            android:textColorHint="#ff808080"
-            android:textCursorDrawable="@null"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/accent"
+            android:textColorHint="@color/disabled_dark"
+            android:textSelectHandleLeft="@drawable/text_select_handle_left_dk"
+            android:textSelectHandleRight="@drawable/text_select_handle_right_dk"
+            android:textSelectHandle="@drawable/text_select_handle_middle_dk"
+            android:textCursorDrawable="@drawable/text_cursor_dk"
             android:textSize="14sp" />
 
         <include

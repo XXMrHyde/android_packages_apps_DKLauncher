@@ -157,6 +157,7 @@
             android:name="com.darkkat.dklauncher.SettingsActivity"
             android:label="@string/settings_button_text"
             android:autoRemoveFromRecents="true"
+            android:theme="@style/Theme.Settings"
             android:process=":settings_process">
         </activity>
 

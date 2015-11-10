@@ -23,6 +23,6 @@
     android:paddingBottom="24dp"
     android:paddingRight="@dimen/all_apps_grid_view_start_margin"
     android:textSize="16sp"
-    android:textColor="#4c4c4c"
+    android:textColor="@color/disabled_dark"
     android:focusable="false" />
 
