@@ -1,8 +1,14 @@
+-keep class com.darkkat.dklauncher.allapps.AllAppsBackgroundDrawable {
+  public void setAlpha(int);
+  public int getAlpha();
+}
+
 -keep class com.darkkat.dklauncher.BaseRecyclerViewFastScrollBar {
   public void setWidth(int);
   public int getWidth();
   public void setTrackAlpha(int);
   public int getTrackAlpha();
+
 }
 
 -keep class com.darkkat.dklauncher.BaseRecyclerViewFastScrollPopup {
