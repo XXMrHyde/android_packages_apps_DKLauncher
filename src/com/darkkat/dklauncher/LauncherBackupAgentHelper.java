@@ -24,7 +24,7 @@ import android.database.Cursor;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
-import com.android.launcher3.model.MigrateFromRestoreTask;
+import com.darkkat.dklauncher.model.MigrateFromRestoreTask;
 
 import java.io.IOException;
 

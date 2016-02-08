@@ -1,4 +1,4 @@
-package com.android.launcher3.model;
+package com.darkkat.dklauncher.model;
 
 import android.content.ComponentName;
 import android.content.ContentProviderOperation;
@@ -12,19 +12,19 @@ import android.graphics.Point;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.launcher3.InvariantDeviceProfile;
-import com.android.launcher3.ItemInfo;
-import com.android.launcher3.LauncherAppState;
-import com.android.launcher3.LauncherAppWidgetProviderInfo;
-import com.android.launcher3.LauncherModel;
-import com.android.launcher3.LauncherProvider;
-import com.android.launcher3.LauncherSettings;
-import com.android.launcher3.LauncherSettings.Favorites;
-import com.android.launcher3.Utilities;
-import com.android.launcher3.compat.PackageInstallerCompat;
-import com.android.launcher3.compat.UserHandleCompat;
-import com.android.launcher3.util.LongArrayMap;
-import com.android.launcher3.util.Thunk;
+import com.darkkat.dklauncher.InvariantDeviceProfile;
+import com.darkkat.dklauncher.ItemInfo;
+import com.darkkat.dklauncher.LauncherAppState;
+import com.darkkat.dklauncher.LauncherAppWidgetProviderInfo;
+import com.darkkat.dklauncher.LauncherModel;
+import com.darkkat.dklauncher.LauncherProvider;
+import com.darkkat.dklauncher.LauncherSettings;
+import com.darkkat.dklauncher.LauncherSettings.Favorites;
+import com.darkkat.dklauncher.Utilities;
+import com.darkkat.dklauncher.compat.PackageInstallerCompat;
+import com.darkkat.dklauncher.compat.UserHandleCompat;
+import com.darkkat.dklauncher.util.LongArrayMap;
+import com.darkkat.dklauncher.util.Thunk;
 
 import java.util.ArrayList;
 import java.util.Collections;

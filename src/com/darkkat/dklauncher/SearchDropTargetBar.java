@@ -26,7 +26,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 
-import com.android.launcher3.util.Thunk;
+import com.darkkat.dklauncher.util.Thunk;
 
 /*
  * Ths bar will manage the transition between the QSB search bar and the delete drop

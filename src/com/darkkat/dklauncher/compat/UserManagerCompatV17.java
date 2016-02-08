@@ -21,7 +21,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.UserManager;
 
-import com.android.launcher3.util.LongArrayMap;
+import com.darkkat.dklauncher.util.LongArrayMap;
 
 import java.util.HashMap;
 

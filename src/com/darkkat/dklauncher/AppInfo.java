@@ -34,7 +34,7 @@ import java.util.Arrays;
  * Represents an app in AllAppsView.
  */
 public class AppInfo extends ItemInfo {
-    private static final String TAG = "Launcher3.AppInfo";
+    private static final String TAG = "DKLauncher.AppInfo";
 
     /**
      * The intent used to start the application.
